@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-
+import { SketchPicker } from 'react-color'
 export default function Navbar(props) {
     return (
         <nav className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}>
@@ -20,14 +20,12 @@ export default function Navbar(props) {
               </li>
             </ul>
           </div>
-                {/* {props.searchBar===true?<form className="form-inline my-2 my-lg-0">
-              <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
-              <button className="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
-            </form>:""} */}
           <div className={`form-check form-switch text-${props.mode==='light'?'dark':'light'}`}>
           <input className="form-check-input" onClick={props.toggleMode} type="checkbox" role="switch" id="flexSwitchCheckDefault"/>
-          <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Enable DarkMood</label>
+          <label className="form-check-label" htmlFor="flexSwitchCheckDefault">{props.mode=== "light"?"Enable DarkMood":"Disable DarkMood"}</label>
         </div>
+        {/* <button type="button" className="btn btn-dark btn-sm"  onClick={props.showColorPicker} style={{backgroundColor :props.color}}>Change Color</button>
+        {props.colorPicker && <SketchPicker color={props.color} onChange={updateColor => props.setColorPickerColor(updateColor.hex)}/>} */}
           </div>
       </nav>
     )
@@ -40,5 +38,6 @@ searchBar: PropTypes.bool.isRequired
 
 Navbar.defaultProps = {
 title:'TextUtils',
-searchBar:true
+searchBar:true,
+color: '#1E6738'
 }
